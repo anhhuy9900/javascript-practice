@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>011 Really Challenging Custom findWhere Helper</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 971858, "assessment_type": "coding-problem", "created": "2016-06-29T23:34:59Z", "prompt": {"instructions": "<p>This is a tough one! &nbsp;The most common find operation is to an object that has a given property. &nbsp;Rather than writing out a full function every time, it would be great if we has a shorthand syntax to find an object like this:<br><code class=\"redactor-inline-converted\">findWhere(ladders, { height: '20 feet' });</code><br>The object <code class=\"redactor-inline-converted\">{&nbsp;ladders: '20 feet'&nbsp;}</code>&nbsp;should be used as the search criteria - we would want to find a ladder whose 'height' property was '20 feet';<br><br></p><p><strong>Your goal:&nbsp;Write a 'findWhere' function that achieves this shorthand approach. &nbsp;'findWhere' should return the found object.</strong></p>\n\n<p>In summary:</p><p><code>var ladders = [<br>&nbsp; { id: 1,&nbsp;height: 20 },<br>&nbsp; { id: 3,&nbsp;height: 25 }<br>];<br><br>findWhere(ladders, { height: 25 }); // result: { id:3, height: 25 }</code></p><p>Hint: the hard part of this is figuring out the name of the proeprty on the criteria. &nbsp;You can use <code class=\"redactor-inline-converted\">Object.keys(criteria)[0]</code>&nbsp;to figure out the name of the property on the object. &nbsp;For example, <code class=\"redactor-inline-converted\">Object.keys({ height: '20 feet' })</code>&nbsp;would return <code class=\"redactor-inline-converted\">'height'</code>. &nbsp;You could then check to see if a given element in the array had a property equal to the criteria's value with something like <code class=\"redactor-inline-converted\">element[property] === criteria[property]</code>.</p>", "solution_files": [{"content": "function findWhere(array, criteria) {\n  return array.find(function(element) {\n    var property = Object.keys(criteria)[0];\n    \n    return element[property] === criteria[property];\n  });\n}", "file_name": "index.js"}], "verification": "", "language": "JS", "test_files": [{"content": "var ladders = [\n  { id: 1, height: 20 },\n  { id: 3, height: 25 }\n];\n\nvar ladder = findWhere(ladders, { height: 25 });\n\nit('finds the correct object given some criteria', () => {\n   expect(ladder.id).toEqual(3); \n});", "file_name": "evaluate.js"}], "initial_files": [{"content": "function findWhere(array, criteria) {\n  \n}", "file_name": "index.js"}], "eval": true, "question": "required", "hints": []}, "correct_response": [""], "updated": "2016-07-19T18:12:49Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

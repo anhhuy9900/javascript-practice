@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>016 Hardmode Custom Unique Helper</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 970790, "assessment_type": "coding-problem", "created": "2016-06-29T01:11:28Z", "prompt": {"question": "required", "eval": true, "initial_files": [{"file_name": "index.js", "content": "function unique(array) {\n  \n}"}], "hints": [], "instructions": "<p>Another really hard one! &nbsp;Write a function called 'unique' that will remove all the duplicate values from an array.</p><p>For example, given the following array:<br><code class=\"redactor-inline-converted\">var numbers = [1, 1, 2, 3, 4, 4];</code><br>Your function should return<br><code>[1, 2, 3, 4]</code><br>Hint: Use the 'reduce' and 'find' helpers. &nbsp;</p>", "test_files": [{"file_name": "evaluate.js", "content": "const uniques = unique([1,1,2,2,3,3,4,4]);\n\nit('finds only the unique values', () => {\n   expect(uniques).toEqual([1,2,3,4]);\n});"}], "language": "JS", "verification": "", "solution_files": [{"file_name": "index.js", "content": "function unique(array) {\n  return array.reduce(function(acc, element) {\n    var existingElement = acc.find(function(target) {\n      return target === element;\n    });\n\n\tif (!existingElement) {\n      acc.push(element); \n    }\n    \n    return acc;\n  }, []);\n}"}]}, "correct_response": [""], "updated": "2016-07-13T19:34:00Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

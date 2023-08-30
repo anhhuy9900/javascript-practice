@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>035 Game Classes</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 982402, "assessment_type": "coding-problem", "created": "2016-07-12T16:11:31Z", "prompt": {"question": "required", "test_files": [{"content": "describe('monster', () => {\n    it('sets the health to 100', () => {\n        expect(new Monster({}).health).toEqual(100);\n    });\n    \n    it('sets the name from the options object', () => {\n       expect(new Monster({ name: 'dragon'}).name).toEqual('dragon'); \n    });\n});", "file_name": "evaluate.js"}], "language": "JS", "verification": "", "solution_files": [{"content": "class Monster {\n  constructor(options) {\n    this.health = 100;\n    this.name = options.name;\n  }\n}", "file_name": "index.js"}], "eval": true, "initial_files": [{"content": "class Monster {\n  \n}", "file_name": "index.js"}], "instructions": "<p>You are a game developer tasked with setting up some basic classes for a new game you are working on. &nbsp;Create a class called 'Monster'. &nbsp;In the constructor, you'll need to do some basic setup for Monster whenever they are created.&nbsp;</p><ul><li>Initialize the Monster's health to 100.</li><li>The constructor will be called with an 'options' object that has a 'name' property. &nbsp;Assign the 'name' to the Monster</li></ul>", "hints": []}, "correct_response": [""], "updated": "2016-07-13T19:34:00Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

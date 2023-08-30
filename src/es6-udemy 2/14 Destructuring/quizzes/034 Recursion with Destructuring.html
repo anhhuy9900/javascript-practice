@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>034 Recursion with Destructuring</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 982400, "assessment_type": "coding-problem", "created": "2016-07-12T16:06:09Z", "prompt": {"solution_files": [{"file_name": "index.js", "content": "const numbers = [1,2,3];\n\nfunction double([ head, ...rest ]) {\n  if (!head) { return []; }\n  \n  return [ 2 * head, ...double(rest) ];\n}"}], "language": "JS", "question": "required", "initial_files": [{"file_name": "index.js", "content": "const numbers = [1, 2, 3];\n\nfunction double() {\n    \n}"}], "test_files": [{"file_name": "evaluate.js", "content": "describe('double', () => {\n    it('is a function', () => {\n       expect(typeof double).toEqual('function');\n    });\n    \n    it('given a list of numbers, it doubles each', () => {\n       expect(double(numbers)).toEqual([2,4,6]);\n    });\n})"}], "eval": true, "instructions": "<p><strong class=\"redactor-inline-converted\">This one is probably the hardest exercise in the entire course! </strong>&nbsp;</p><p>Use array destructuring, recursion, and the rest/spread operators to create a function 'double' that will return a new array with all values inside of it multiplied by two. &nbsp;<strong class=\"redactor-inline-converted\">Do not use any array helpers!</strong>&nbsp;Sure, the map, forEach, or reduce helpers would make this extremely easy but give it a shot the hard way anyways :)</p><p><strong class=\"redactor-inline-converted\">Input:</strong></p><p><code>double([1,2,3])</code></p><p><strong>Output</strong></p><p><code>[2,4,6]</code></p><p>Hint: Don't forget that with recursion you must add a base case so you don't get an infinite call stack. &nbsp;For example, if 'const [ number, ...rest ] = numbers' and number is undefined do you need to keep walking through the array?<br></p>", "hints": [], "verification": ""}, "correct_response": [""], "updated": "2016-07-13T19:34:00Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

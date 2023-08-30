@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>036 Subclassing Monsters</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 982404, "assessment_type": "coding-problem", "created": "2016-07-12T16:14:41Z", "prompt": {"question": "required", "hints": [], "eval": true, "solution_files": [{"file_name": "index.js", "content": "class Monster {\n  constructor(options) {\n    this.health = 100;\n    this.name = options.name;\n  }\n}\n\nclass Snake extends Monster {\n  bite(targetSnake) {\n    targetSnake.health -= 10;\n  }\n}"}], "verification": "", "language": "JS", "instructions": "<p>Now that you have a monster created, create a subclass of the Monster called Snake. &nbsp;</p><ul><li>The Snake should have a 'bite' method. &nbsp;The only argument to this method is another instance of a Snake.</li><li>The instance of Snake that is passed in should have their health deducated by 10</li></ul>", "test_files": [{"file_name": "evaluate.js", "content": "describe('snake', () => {\n   it('creates a new snake with health and name', () => {\n    const snake = new Snake({ name: 'Snakey' });\n    expect(snake.name).toEqual('Snakey');\n    expect(snake.health).toEqual(100);\n   });\n   \n   it('has a method called bite', () => {\n    const snake = new Snake({ name: 'Snakey' });\n    expect(typeof snake.bite).toEqual('function');\n   });\n   \n   it('can bite another snake', () => {\n      const snake1 = new Snake({ name: 'Snakey' }); \n      const snake2 = new Snake({ name: 'Snakey' });\n      snake1.bite(snake2)\n      expect(snake1.health).toEqual(100);\n      expect(snake2.health).toEqual(90);\n   });\n});"}], "initial_files": [{"file_name": "index.js", "content": "class Monster {\n  constructor(options) {\n    this.health = 100;\n    this.name = options.name;\n  }\n}\n\nclass Snake {\n\n}"}]}, "correct_response": [""], "updated": "2016-07-13T19:34:00Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

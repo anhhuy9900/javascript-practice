@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>017 A Constant Exercise of Letting Variables Be Variables</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 970794, "assessment_type": "coding-problem", "created": "2016-06-29T01:14:16Z", "prompt": {"initial_files": [{"content": "", "file_name": "index.js"}], "verification": "", "eval": true, "hints": [], "solution_files": [{"content": "const name = 'Name';\nlet age = 20;\nconst dateOfBirth = 'January 1 2016';", "file_name": "index.js"}], "test_files": [{"content": "it('creates three variables', () => {\n    expect(name).toBeDefined();\n    expect(age).toBeDefined();\n    expect(dateOfBirth).toBeDefined();\n});", "file_name": "evaluate.js"}], "instructions": "<p>Imagine that you are building an application&nbsp;to manage a user's Facebook profile. &nbsp;A profile&nbsp;might have a 'name', 'age', and 'dateOfBirth'.<br>Declare three variables with these same names, making sure&nbsp;to use 'const' or 'let' depending on whether you expect&nbsp;the value to change over time.</p>", "question": "required", "language": "JS"}, "correct_response": [""], "updated": "2016-07-13T19:34:00Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

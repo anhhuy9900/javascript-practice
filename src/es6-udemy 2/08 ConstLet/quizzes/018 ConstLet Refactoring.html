@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>018 ConstLet Refactoring</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 970798, "assessment_type": "coding-problem", "created": "2016-06-29T01:18:50Z", "prompt": {"eval": true, "solution_files": [{"content": "const statuses = [ \n  { code: 'OK', response: 'Request successful' },\n  { code: 'FAILED', response: 'There was an error with your request' },\n  { code: 'PENDING', response: 'Your reqeust is still pending' }\n];\nlet message = '';\nconst currentCode = 'OK';\n\nfor (let i = 0; i < statuses.length; i++) {\n  if (statuses[i].code === currentCode) {\n    message = statuses[i].response;\n  }\n}", "file_name": "index.js"}], "verification": "", "initial_files": [{"content": "var statuses = [ \n  { code: 'OK', response: 'Request successful' },\n  { code: 'FAILED', response: 'There was an error with your request' },\n  { code: 'PENDING', response: 'Your reqeust is still pending' }\n];\nvar message = '';\nvar currentCode = 'OK';\n\nfor (var i = 0; i < statuses.length; i++) {\n  if (statuses[i].code === currentCode) {\n    message = statuses[i].response;\n  }\n}", "file_name": "index.js"}], "question": "required", "language": "JS", "instructions": "<p>The following code uses 'var' instead of 'const' and 'let'.&nbsp;Refactor the function to use the new keywords. &nbsp;Be sure to&nbsp;consider whether the variable should be declared using&nbsp;'const' or 'let' depending on whether the variable gets&nbsp;reassigned or not.</p>", "hints": [], "test_files": [{"content": "it('generates the correct message', () => {\n   expect(message).toEqual('Request successful'); \n});", "file_name": "evaluate.js"}]}, "correct_response": [""], "updated": "2016-07-20T16:12:18Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

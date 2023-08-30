@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>002 Processing Values</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 970418, "assessment_type": "coding-problem", "created": "2016-06-28T15:11:20Z", "prompt": {"initial_files": [{"content": "var images = [\n  { height: 10, width: 30 },\n  { height: 20, width: 90 },\n  { height: 54, width: 32 }\n];\nvar areas = [];", "file_name": "index.js"}], "instructions": "<p>The array below contains an array of objects, each of which is a representation of an image. &nbsp;Using the forEach helper, calculate the area of each image and store it in a new array called 'areas'. &nbsp;The area of an image can be calculated as 'image.height * image.width'.</p>", "solution_files": [{"content": "var images = [\n  { height: 10, width: 30 },\n  { height: 20, width: 90 },\n  { height: 54, width: 32 }\n];\n\nvar areas = [];\nimages.forEach(function(image) {\n  areas.push(image.height * image.width);\n});", "file_name": "index.js"}], "test_files": [{"content": "describe('areas', () => {\n    it('is an array', () => {\n        expect(Array.isArray(areas)).toBe(true);\n    });\n    \n    it('contains values', () => {\n       expect(areas).toEqual([300, 1800, 1728]) \n    });    \n})\n", "file_name": "evaluate.js"}], "hints": [], "question": "required", "eval": true, "language": "JS", "verification": ""}, "correct_response": [""], "updated": "2016-07-13T19:34:00Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

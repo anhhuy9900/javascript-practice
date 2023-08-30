@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>026 Refactor to use enhanced literal notation</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 970936, "assessment_type": "coding-problem", "created": "2016-06-29T06:42:39Z", "prompt": {"test_files": [{"file_name": "evaluate.js", "content": "it('has appropriate properties', () => {\n   expect(Car.color).toEqual('red');\n   expect(Car.drive()).toEqual('Vroom!');\n   expect(Car.getColor()).toEqual('red');\n});"}], "language": "JS", "question": "required", "instructions": "<p>Refactor to use enhanced literal notation</p>", "hints": [], "eval": true, "initial_files": [{"file_name": "index.js", "content": "const color = 'red';\n\nconst Car = {\n  color: color,\n  drive: function() {\n    return 'Vroom!';\n  },\n  getColor: function() {\n    return this.color;\n  }\n};"}], "verification": "", "solution_files": [{"file_name": "index.js", "content": "const color = 'red';\n\nconst Car = {\n  color,\n  drive() {\n    return 'Vroom!';\n  },\n  getColor() {\n    return this.color;\n  }\n};"}]}, "correct_response": [""], "updated": "2016-07-13T19:34:00Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

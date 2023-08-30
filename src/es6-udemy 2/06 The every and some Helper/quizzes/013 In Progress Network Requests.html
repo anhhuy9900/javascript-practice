@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>013 In Progress Network Requests</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 970784, "assessment_type": "coding-problem", "created": "2016-06-29T01:06:49Z", "prompt": {"eval": true, "hints": [], "instructions": "<p>Given an array of network objects representing network requests, assign the boolean 'true' to the variable 'inProgress' if any network request has a 'status' of 'pending'.</p>", "question": "required", "initial_files": [{"file_name": "index.js", "content": "var requests = [\n  { url: '/photos', status: 'complete' },\n  { url: '/albums', status: 'pending' },\n  { url: '/users', status: 'failed' }\n];\n\nvar inProgress;"}], "solution_files": [{"file_name": "index.js", "content": "var requests = [\n  { url: '/photos', status: 'complete' },\n  { url: '/albums', status: 'pending' },\n  { url: '/users', status: 'failed' }\n];\n\nvar inProgress = requests.some(function(request) {\n  return request.status === 'pending';\n});"}], "language": "JS", "verification": "", "test_files": [{"file_name": "evaluate.js", "content": "it('assigns true to inProgress if a request is still in progress', () => {\n   expect(inProgress).toBeTruthy(); \n});"}]}, "correct_response": [""], "updated": "2016-07-13T19:34:00Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

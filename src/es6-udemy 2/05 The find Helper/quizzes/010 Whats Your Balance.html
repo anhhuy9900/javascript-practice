@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>010 Whats Your Balance</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 970792, "assessment_type": "coding-problem", "created": "2016-06-29T01:13:48Z", "prompt": {"instructions": "<p>Find the account with a balance of 12 and assign it to the variable 'account'.</p>", "test_files": [{"content": "it('finds the account with a balance of 12', () => {\n    expect(account.balance).toEqual(12);\n});", "file_name": "evaluate.js"}], "eval": true, "language": "JS", "hints": [], "solution_files": [{"content": "var accounts = [\n  { balance: -10 },\n  { balance: 12 },\n  { balance: 0 }\n];\n\nvar account = accounts.find(function(account) {\n  return account.balance === 12;\n});", "file_name": "index.js"}], "question": "required", "verification": "", "initial_files": [{"content": "var accounts = [\n  { balance: -10 },\n  { balance: 12 },\n  { balance: 0 }\n];\n\nvar account;", "file_name": "index.js"}]}, "correct_response": [""], "updated": "2016-07-13T19:34:00Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

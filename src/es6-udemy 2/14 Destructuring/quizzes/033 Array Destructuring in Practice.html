@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>033 Array Destructuring in Practice</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 982398, "assessment_type": "coding-problem", "created": "2016-07-12T15:58:26Z", "prompt": {"test_files": [{"file_name": "evaluate.js", "content": "describe('classesAsObject', () => {\n    it('is an array', () => {\n        expect(Array.isArray(classesAsObject)).toEqual(true);\n    })\n    \n    it('contains three objects', () => {\n       expect(typeof classesAsObject[0]).toEqual('object');\n       expect(typeof classesAsObject[1]).toEqual('object');\n       expect(typeof classesAsObject[2]).toEqual('object');\n    });\n    \n    it('each object contains a subject, time and teacher property', () => {\n       expect(classesAsObject[0].subject).not.toBeUndefined(); \n       expect(classesAsObject[0].time).not.toBeUndefined();\n       expect(classesAsObject[0].teacher).not.toBeUndefined();\n    });\n    \n    it('contains the correct values for each property', () => {\n        expect(classesAsObject[0].subject).toEqual('Chemistry'); \n       expect(classesAsObject[0].time).toEqual('9AM');\n       expect(classesAsObject[0].teacher).toEqual('Mr. Darnick');\n    });\n})"}], "hints": [], "eval": true, "question": "required", "solution_files": [{"file_name": "index.js", "content": "const classes = [\n  [ 'Chemistry', '9AM', 'Mr. Darnick' ],\n  [ 'Physics', '10:15AM', 'Mrs. Lithun'],\n  [ 'Math', '11:30AM', 'Mrs. Vitalis' ]\n];\n\nconst classesAsObject = classes.map(([ subject, time, teacher]) => {\n  return { subject, time, teacher };\n});"}], "initial_files": [{"file_name": "index.js", "content": "const classes = [\n  [ 'Chemistry', '9AM', 'Mr. Darnick' ],\n  [ 'Physics', '10:15AM', 'Mrs. Lithun'],\n  [ 'Math', '11:30AM', 'Mrs. Vitalis' ]\n];\n\nconst classesAsObject;"}], "language": "JS", "instructions": "<p>The 'classes' variable holds an array of arrays, where each array represents a single class that a student is enrolled in. &nbsp;Convert this array of arrays into an array of objects, where each object has the keys 'subject', 'time', and 'teacher' and assign the result to 'classesAsObject. &nbsp;Use array destructuring and the map helper.</p>\n\n<p>An array for a class has the form <code>[subject, time, teacher]</code></p><p>The resulting data structure should look something like the following:</p><p><code>const classesAsObject = [{ subject: 'Geography', time: '2PM', teacher: 'Mrs. Larsen'&nbsp;}]</code></p>", "verification": ""}, "correct_response": [""], "updated": "2016-07-13T19:34:00Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

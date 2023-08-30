@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>006 Filtering Values</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 970434, "assessment_type": "coding-problem", "created": "2016-06-28T15:23:49Z", "prompt": {"instructions": "<p>Filter the array of numbers using the filter helper, creating a new array that only contains numbers greater than 50. &nbsp;Assign this new array to a variable called 'filteredNumbers'. &nbsp;Don't forget to use the 'return' keyword in the function!</p>", "hints": [], "language": "JS", "test_files": [{"content": "it('filters values', () => {\n   expect(filteredNumbers).toEqual([55, 65, 75, 85, 95]);\n});", "file_name": "evaluate.js"}], "solution_files": [{"content": "var numbers = [15, 25, 35, 45, 55, 65, 75, 85, 95];\n\nvar filteredNumbers = numbers.filter(function(number) {\n  return number > 50;\n});", "file_name": "index.js"}], "verification": "", "eval": true, "question": "required", "initial_files": [{"content": "var numbers = [15, 25, 35, 45, 55, 65, 75, 85, 95];\n\nvar filteredNumbers;", "file_name": "index.js"}]}, "correct_response": [""], "updated": "2016-07-13T20:31:06Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>028 Dumping Unused Code</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 970940, "assessment_type": "coding-problem", "created": "2016-06-29T06:45:41Z", "prompt": {"hints": [], "question": "required", "instructions": "<p>Refactor the following code to use default function arguments. &nbsp;Be sure to remove any unused code after you refactor it.</p>", "solution_files": [{"file_name": "index.js", "content": "function addOffset(style = {}) {\n  style.offset = '10px';\n  return style;\n}"}], "language": "JS", "test_files": [{"file_name": "evaluate.js", "content": "it('defaults argument to a function', () => {\n   expect(addOffset()).toEqual({ offset: '10px' });\n});"}], "eval": true, "initial_files": [{"file_name": "index.js", "content": "function addOffset(style) {\n  if (!style) {\n    style = {}; \n  }\n  \n  style.offset = '10px';\n  \n  return style;\n}"}], "verification": ""}, "correct_response": [""], "updated": "2016-07-13T19:34:00Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

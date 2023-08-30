@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>001 Moving Away from For Loops</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 1, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 970416, "assessment_type": "coding-problem", "created": "2016-06-28T15:08:17Z", "prompt": {"initial_files": [{"content": "function handlePosts() {\n    var posts = [\n      { id: 23, title: 'Daily JS News' },\n      { id: 52, title: 'Code Refactor City' },\n      { id: 105, title: 'The Brightest Ruby' }\n    ];\n    \n    for (var i = 0; i < posts.length; i++) {\n      savePost(posts[i]);\n    }\n}", "file_name": "index.js"}], "instructions": "<p>The code below is calling 'savePost' three times, but it is doing so using a for loop. &nbsp;This implementation works, but the for loop makes it more challenging to understand&nbsp;the purpose of the function. &nbsp;Rather than using a for loop, refactor the code below to instead&nbsp;use the forEach helper.</p>", "solution_files": [{"content": "function handlePosts() {\n    var posts = [\n      { id: 23, title: 'Daily JS News' },\n      { id: 52, title: 'Code Refactor City' },\n      { id: 105, title: 'The Brightest Ruby' }\n    ];\n    \n    posts.forEach(function(post) {\n      savePost(post);\n    });\n}", "file_name": "index.js"}], "test_files": [{"content": "let i = 0;\nvar savePost = function() {\n    i += 1;\n}\n\ndescribe('when calling handlePosts', () => {\n    it('calls savepost three times', () => {\n        handlePosts();\n        expect(i).toEqual(3);\n    });\n})\n", "file_name": "evaluate.js"}], "hints": [], "question": "required", "eval": true, "language": "JS", "verification": ""}, "correct_response": [""], "updated": "2016-07-13T19:34:00Z", "section": "", "question_plain": "required", "related_lectures": []}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>
