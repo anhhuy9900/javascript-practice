@@ -14,23 +14,13 @@ let arr = [po1,po2,po3]
 //     .then((val)=>{console.log(val)})
 //     .catch((err)=>{console.log(err)})
 // // })
-// let fastest = Promise.race(arr)
-// fastest
-// .then((val)=>{console.log(val)})
-// .catch((err)=>{console.log(err)})
-// Promise.allSettled(arr)
-// .then((val)=>{
-//     val.forEach((item)=>{
-//         console.log(item.value || item.reason)
-//     })
-// })
 
-Promise.all(arr)
-.then((val)=>{
+
+Promise.all(arr).then((val)=>{
     val.forEach((item)=>{
         console.log(item)
     })
-})
-.catch((err)=>{
+}).catch((err)=>{
     console.log(err)
 })
+
