@@ -1,5 +1,10 @@
 "use strict";
 
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing
+// An event handler is a particular type of callback. 
+// A callback is just a function that's passed into another function, with the expectation that the callback will be called at the appropriate time. 
+// As we just saw, callbacks used to be the main way asynchronous functions were implemented in JavaScript.
+
 function getTotal() {
     return 100;
 }
@@ -12,32 +17,12 @@ const getAssume = ((val) => {
     return val;
 });
 
-const async1 = (val, callback) => {
-    return callback(val+1)
-};
-const async2 = (val, callback) => {
-    return callback(val+1)
-};
-const async3 = (val, callback) => {
-    return callback(val+1)
-};
-const callbackHell = () => {
-    return async1(1, (res) => {
-        return async2(res, (res2) => {
-            return async3(res2, (res3) => {
-                return res3
-            });
-        });
-    });
-}
-    
 
 const promise = new Promise((resolve, reject) => {
     const res = getAssume(1);
     if (res === 1) resolve(res);
     reject(new Error('Bad result'))
 })
-console.log("Call callbackHell -> ", callbackHell());
 
 setTimeout(() => console.log("Call SetTimeout getAssume -> ", getAssume(3)),0);
 
@@ -52,7 +37,6 @@ console.log("Call getPayment -> ", getPayment());
 
 
 // *Output
-// Call callbackHell ->  4
 // Call getAssume PROMISE ->  Promise { <pending> }
 // Call getAssume ->  1
 // Call getTotal ->  100

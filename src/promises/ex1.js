@@ -25,26 +25,32 @@ po.then((val)=>{console.log(val)})
 async function outer(){
     console.log('program starts...')
 
-    let sv = await my_ajax(url_1)
+    let sv = my_ajax(url_1)
     console.log(sv)
 
     console.log('program ends...')
 }
-outer()
+// outer()
 
 
-// async function outer(){
+// async function outer2(){
 //     let num = 1
-
 //     await new Promise((resolve,reject)=>{
 //         setTimeout(()=>{
 //             num++
 //             resolve('whatever...')
 //         },1000)
 //     })
-
+//
 //     console.log(num)
 // }
 
+async function outer3(){
+    console.log('program starts...')
 
-// outer()
+    let sv = my_ajax(url_1)
+    console.log(sv)
+
+    console.log('program ends...')
+}
+outer3();

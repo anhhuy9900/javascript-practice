@@ -9,6 +9,7 @@
   "author": "Nguyen Hoang Anh Huy",
   "license": "ISC",
   "dependencies": {
+    "node-fetch": "^2.6.6",
     "xhr2": "^0.2.1"
   }
 }

@@ -1,26 +1,41 @@
-let po1 = new Promise((resolve,reject)=>{
-    setTimeout(()=>{ resolve('po1: success') },3000)
-})
-let po2 = new Promise((resolve,reject)=>{
-    setTimeout(()=>{ reject('po2: FAILURE') },1000)
-})
-let po3 = new Promise((resolve,reject)=>{
-    setTimeout(()=>{ resolve('po3: success') },2000)
-})
+function runAction() {
+    let total = 0;
+    for (let i = 0; i < 10000000000; i++) {
+        total++;
+    }
 
-let arr = [po1,po2,po3]
-// arr.forEach((po)=>{
-//     po
-//     .then((val)=>{console.log(val)})
-//     .catch((err)=>{console.log(err)})
-// // })
+    console.log('--------- FINISH runAction function ---------');
+    return total
+}
+
+function run() {
+    console.log('------ START ------')
+
+    new Promise((resolve, reject) => {
+        // ** ###### SYNC - NOT ASYNC ########
+        // ** The Promise block is synchronous - The Promise callback blocks (resolve, reject) are synchronous
+        // resolve(runAction())
+        // ** When check console will show like this
+        // ------ START ------
+        // --------- FINISH runAction function ---------
+        // ------ END ------
+        // ------ Resolve Promise:  10000000001  -------
 
 
-Promise.all(arr).then((val)=>{
-    val.forEach((item)=>{
-        console.log(item)
+        // ** ###### ASYNC - The callback call (not the block itself) can be asynchronous if the Promise block uses a setTimeout block ########
+        setTimeout(() => {
+            resolve(runAction())
+        }, 0)
+        // ** When check console will show like this
+        // ------ START ------
+        // ------ END ------
+        // --------- FINISH runAction function ---------
+        // ------ Resolve Promise:  10000000001  -------
+    }).then(res => {
+        console.log('------ Resolve Promise: ', res, ' -------');
     })
-}).catch((err)=>{
-    console.log(err)
-})
 
+    console.log('------ END ------')
+}
+
+run();
