@@ -181,10 +181,10 @@ async function test() {
     // console.log('Decompressed Buffer: %j', decompressObject);
 
     console.log("===================================================================")
-
+    console.log('Compressed Stringify -> jsonObject: %j', jsonObject);
     // Stringify
     const compressStringify = compressJsonObjectStringify(jsonObject);
-    console.log('Compressed Stringify: %j', compressStringify);
+    console.log('Compressed Stringify %j', compressStringify);
     const compressStringifySize = Buffer.byteLength(compressStringify, 'utf8');
     console.log(`Compressed Stringify size: ${compressStringifySize} bytes`);
     // console.log(`Compressed Stringify Size of object: ${sizeof.sizeof(compressStringifySize)} bytes`);
