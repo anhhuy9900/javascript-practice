@@ -17,13 +17,22 @@ async function run(value) {
     }).then(res => {
         console.log('------ Resolve Promise: ', res, ' -------');
         return res * 10;
+    }).then(res => {
+        console.log('------ Resolve Promise: ', res, ' -------');
+        return res * 10;
     })
 }
 
 (() => {
     console.log('############ Run Promise like asynchronous ############');
-    run(1);
-    run(2);
+    run(1).then(res => {
+        console.log('------ result -> res: ', res);
+    });
+
+    // const resultNext = result.then();
+    // console.log('------ result: ', result.then().then());
+    // run(1);
+    // run(2);
 })()
 
 // (async () => {
